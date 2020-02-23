@@ -3,6 +3,8 @@ package model.logic;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -388,7 +390,6 @@ public class Modelo
 	{
 		int i = low;
 		int j = mid+1;
-		
 		for (int k = low; k <= height; k++)
 		{
 			auxiliar[k] = copia[k];
@@ -416,4 +417,51 @@ public class Modelo
 		
 	}
 	
+	
+	
+	public static void ordenamientoPorQuickSort(Comparable [] a)
+	{
+		
+		Random rnd = ThreadLocalRandom.current();
+
+		for (int i = a.length - 1; i > 0; i--)
+		{
+			int index = rnd.nextInt(i + 1);
+			Comparable x = a[index];
+			a[index] = a[i];
+			a[i] = x;
+		}
+		
+		quickSort(a, 0, a.length-1);
+		
+	}
+	
+	
+	private static void  quickSort(Comparable[] a, int lo, int hi)
+	{
+		if (hi<=lo) return;
+		
+		int j = partition (a,lo,hi);
+		quickSort(a,lo,j-1);
+		quickSort(a,j+1,hi);
+	}
+	
+	private static int partition(Comparable[] a, int lo, int hi)
+	{
+		int i=lo, j=hi+1;
+		Comparable v=a[lo];
+		
+		while (true)
+		{
+			while (a[++i].compareTo(v)<0) if (i==hi) break;
+			while (v.compareTo(a[--j])<0) if (j==lo) break;
+			if (i>=j) break;
+				exchange(a,i,j);
+		}
+		
+		exchange(a,lo,j);
+		return j;
+	}
+	
+
 }

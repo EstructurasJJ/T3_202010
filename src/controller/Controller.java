@@ -42,7 +42,7 @@ public class Controller {
 
 				//Cargar el archivo
 
-				modelo.leerGeoJson(RUTAGEOJASON);
+				modelo.leerGeoJson(JUEGUEMOS);
 
 				view.printMessage("Archivo GeoJSon Cargado");
 				view.printMessage("Numero actual de comparendos " + modelo.darTamanio() + "\n----------");
@@ -57,7 +57,7 @@ public class Controller {
 				view.printMessage("Tipo Servicio: " + modelo.PrimerComparendo().darTipo_Servicio());
 				view.printMessage("Localidad: " + modelo.PrimerComparendo().darLocalidad() + "\n----------");
 
-				//Segundo Comparendo
+				//Último Comparendo
 
 				view.printMessage("La información del último Object Id es: ");
 				view.printMessage("Object Id: " + modelo.UltimoComparendo().darObjectid());
@@ -163,7 +163,7 @@ public class Controller {
 				//Ordenar los datos de forma acendente por Quick Sort y medir tiempo.
 
 				tiempoComienzo=System.currentTimeMillis();
-				//modelo.shell_sort(copia2);
+				modelo.ordenamientoPorQuickSort(copia2);
 				tiempo= System.currentTimeMillis()-tiempoComienzo;
 
 				//Imprimir primeros 10
