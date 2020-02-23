@@ -1,6 +1,6 @@
 package model.data_structures;
 
-public interface IListaEnlazadaQueue <T> extends Iterable<T>  
+public interface IListaEnlazadaQueue <T extends Comparable<T>>
 {
 	public void enqueue(T parte);
 	

@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import model.logic.Comparendo;
 
-public class ListaEnlazadaQueue <T> implements IListaEnlazadaQueue <T> 
+public class ListaEnlazadaQueue <T extends Comparable<T>>
 {
 	
 	private int tamanio;
@@ -89,10 +89,5 @@ public class ListaEnlazadaQueue <T> implements IListaEnlazadaQueue <T>
 		return eliminado;
 	}
 	
-	//No utilizado
-	public Iterator iterator() 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

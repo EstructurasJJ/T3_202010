@@ -281,66 +281,138 @@ public class Modelo
 	}
 	
 	
-	// METODOS A TERMINAR PARA LA ENTREGA FINAL //
+	//TODO NUEVO TALLER 3
 	
-	public int compareTo(Comparendo Compi)
-	{
-		return 0;
-	}
+	//Generar copia.
 	
-	//JuanJo
-	
-	public Comparendo darPrimeroLocalidad (String loca)
+	public Comparable[] copiarComparendos()
 	{
-		return null;
-	}
-	public ListaEnlazadaQueue<Comparendo> CompisFecha (String fecha)
-	{
-		return null;
-	}
-	public ArrayList<Comparendo> InfraccionEnFechaDada(String fecha1, String fecha2)
-	{
-		return null;
-	}
-	
-	//Bobby
-	
-	public Comparendo darPrimeroInfraccion (String infra)
-	{
-		return null;
-	}
-	public ListaEnlazadaQueue<Comparendo> CompisInfraccion (String infra)
-	{
-		return null;
-	}
-	public ArrayList<Comparendo> InfraccionEnTipoServicio()
-	{
-		return null;
+		Comparable[] comparendosCopia = new Comparable[booty.darTamanio()];
+		int contador = 0;
+		
+		while(booty.darTamanio()>0)
+		{
+			Comparendo compi = booty.dequeue();
+			
+			comparendosCopia[contador] = compi;
+			
+//			Comparendo prueba = (Comparendo) comparendosCopia[contador];
+//			int id = prueba.darObjectid();
+//			System.out.println(id);
+			
+			contador++;
+			
+		}
+		
+		return comparendosCopia;
 	}
 	
-	//Ambos
+	//Menor
 	
-	public ArrayList<Comparendo> InfraccionRepetidos(String fechaMin, String fechaMax)
+	public static boolean less(Comparable compi1, Comparable compi2)
 	{
-		return null;
-	}
-	public ArrayList<Comparendo> InfraccionTopN(int N, String fechaMin, String fechaMax)
-	{
-		return null;
-	}
-	public ArrayList<Comparendo> Histograma()
-	{
-		return null;
+		return compi1.compareTo(compi2) < 0;
 	}
 	
-	//Util
+	//Intercambio
 	
-	public ArrayList<Comparendo> filtrarInfracciones()
+	public static void exchange(Comparable[] copia, int pos1, int pos2)
 	{
-		return null;
+		Comparable tempo = copia[pos1];
+		copia[pos1] = copia[pos2];
+		copia[pos2] = tempo;
 	}
-	public void ordenamiento(Comparable[] a)
+	
+	//Shell sort
+	
+	public Comparable[] shell_sort(Comparable[] copia)
 	{
+		int N = copia.length;
+		int h = 1;
+		
+		while(h < N/3)
+		{
+			h = 3*h +1;
+		}
+		
+		while(h>=1)
+		{
+			for (int i = h; i < N; i++)
+			{
+				for(int j = i; j>=h && less(copia[j], copia[j-h]); j = j -h)
+				{
+					exchange(copia,j,j-h);
+				}
+			}
+			
+			h = h/3;
+		}
+		
+		return copia;
+		
+	}
+	
+	//Merge Sort
+	
+	public Comparable[] MergeSort(Comparable[] copia)
+	{
+		Comparable[] auxiliar = new Comparable[copia.length];
+		
+		sort_subpartes(copia, 0, copia.length-1, auxiliar);
+		
+		return copia;
+	}
+
+	//Ordenar sub partes.
+	private static void sort_subpartes(Comparable[] copia, int low, int height, Comparable[] auxiliar) 
+	{
+		//Salir de la recursión.
+		if(height <= low)
+			return;
+		
+		//Definir las mitades.
+		int mid = low + (height-low)/2;
+		
+		//Lado derecho.
+		sort_subpartes(copia, low, mid, auxiliar);
+		
+		//Lado izquierdo.
+		sort_subpartes(copia, mid+1, height, auxiliar);
+		
+		//Unir todo.
+		merge(copia, low, mid, height, auxiliar);
+	}
+
+	//Unir todas las subpartes.
+	private static void merge(Comparable[] copia, int low, int mid, int height, Comparable[] auxiliar) 
+	{
+		int i = low;
+		int j = mid+1;
+		
+		for (int k = low; k <= height; k++)
+		{
+			auxiliar[k] = copia[k];
+		}
+		
+		for (int k = low; k <= height; k++)
+		{
+			if(i > mid)
+			{
+				copia[k] = auxiliar[j++];
+			}
+			else if(j > height)
+			{
+				copia[k] = auxiliar[i++];
+			}
+			else if(less(auxiliar[j], auxiliar[i]))
+			{
+				copia[k] = auxiliar[j++];
+			}
+			else
+			{
+				copia[k] = auxiliar[i++];
+			}
+		}
 		
 	}
 	
