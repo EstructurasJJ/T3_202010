@@ -292,10 +292,11 @@ public class Modelo
 		Comparable[] comparendosCopia = new Comparable[booty.darTamanio()];
 		int contador = 0;
 		
-		while(booty.darTamanio()>0)
+		Node<Comparendo> actual = booty.darPrimerElemento();
+		
+		while(actual != null)
 		{
-			Comparendo compi = booty.dequeue();
-			
+			Comparendo compi = actual.darInfoDelComparendo();
 			comparendosCopia[contador] = compi;
 			
 //			Comparendo prueba = (Comparendo) comparendosCopia[contador];
@@ -303,6 +304,7 @@ public class Modelo
 //			System.out.println(id);
 			
 			contador++;
+			actual = actual.darSiguiente();
 			
 		}
 		
@@ -417,10 +419,11 @@ public class Modelo
 		
 	}
 	
-	
+	//Quick Sort
 	
 	public static void ordenamientoPorQuickSort(Comparable [] a)
 	{
+		//Volverlo aleatorio
 		
 		Random rnd = ThreadLocalRandom.current();
 
@@ -432,10 +435,13 @@ public class Modelo
 			a[i] = x;
 		}
 		
+		//Ordenarlo
+		
 		quickSort(a, 0, a.length-1);
 		
 	}
 	
+	//Ordenar las subpartes.
 	
 	private static void  quickSort(Comparable[] a, int lo, int hi)
 	{
@@ -446,9 +452,11 @@ public class Modelo
 		quickSort(a,j+1,hi);
 	}
 	
+	//Donde se parte el arreglo
+	
 	private static int partition(Comparable[] a, int lo, int hi)
 	{
-		int i=lo, j=hi+1;
+		int i=lo, j=hi+1; //Indices derecha e izquierda
 		Comparable v=a[lo];
 		
 		while (true)

@@ -2,6 +2,9 @@ package test.data_structures;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +18,9 @@ public class TestListaEnlazadaQueue
 	private ListaEnlazadaQueue cola;
 
 	private Modelo modelo;
+	private Comparable[] arreglo1;
+	private Comparable[] arreglo2;
+	private Comparable[] arreglo3;
 
 	public void setUp()
 	{
@@ -36,6 +42,34 @@ public class TestListaEnlazadaQueue
 			nuevo.asignarObjectid(i);
 
 			cola.enqueue(nuevo);
+		}
+	}
+	
+	public void setUp2()
+	{
+		modelo = new Modelo();
+		
+		arreglo1 = new Comparable[100];
+		arreglo2 = new Comparable[100];
+		arreglo3 = new Comparable[100];
+		
+		//Arreglo aleatorio
+		for (int i = 0; i < 100; i++)
+		{
+			double dato = Math.random();
+			arreglo1[i] = dato; 
+		}
+		
+		//Arreglo ordenado ascendentemente
+		for (int i = 0; i < 100; i++)
+		{
+			arreglo2[i] = i; 
+		}
+		
+		//Arreglo ordenado descendentemente
+		for (int i = 99; i >= 0; i--)
+		{
+			arreglo3[i] = i; 
 		}
 	}
 
@@ -119,5 +153,165 @@ public class TestListaEnlazadaQueue
 		assertTrue(cola.darPrimerElemento()!=null);
 	}
 	
-
+	//Ordenamientos
+	
+	@Test
+	public void testShell()
+	{
+		setUp2();
+		Boolean ordenado = true;
+		
+		modelo.shell_sort(arreglo1);
+		
+		for(int i = 0; i < arreglo1.length-1; i++)
+		{
+			Double dato1 = (Double) arreglo1[i];
+			Double dato2 = (Double) arreglo1[i+1];
+			
+			if (dato1 > dato2)
+			{
+				ordenado = false;
+			}
+		}
+		
+		assertTrue(ordenado);
+		
+		modelo.shell_sort(arreglo2);
+		
+		for(int i = 0; i < arreglo2.length-1; i++)
+		{
+			Integer dato1 = (Integer) arreglo2[i];
+			Integer dato2 = (Integer) arreglo2[i+1];
+			
+			if (dato1 > dato2)
+			{
+				ordenado = false;
+			}
+		}
+		
+		assertTrue(ordenado);
+		
+		modelo.shell_sort(arreglo3);
+		
+		for(int i = 0; i < arreglo3.length-1; i++)
+		{
+			Integer dato1 = (Integer) arreglo3[i];
+			Integer dato2 = (Integer) arreglo3[i+1];
+			
+			if (dato1 > dato2)
+			{
+				ordenado = false;
+			}
+		}
+		
+		assertTrue(ordenado);
+		
+	}
+	
+	
+	@Test
+	public void testMerge()
+	{
+		setUp2();
+		Boolean ordenado = true;
+		
+		modelo.MergeSort(arreglo1);
+		
+		for(int i = 0; i < arreglo1.length-1; i++)
+		{
+			Double dato1 = (Double) arreglo1[i];
+			Double dato2 = (Double) arreglo1[i+1];
+			
+			if (dato1 > dato2)
+			{
+				ordenado = false;
+			}
+		}
+		
+		assertTrue(ordenado);
+		
+		modelo.MergeSort(arreglo2);
+		
+		for(int i = 0; i < arreglo2.length-1; i++)
+		{
+			Integer dato1 = (Integer) arreglo2[i];
+			Integer dato2 = (Integer) arreglo2[i+1];
+			
+			if (dato1 > dato2)
+			{
+				ordenado = false;
+			}
+		}
+		
+		assertTrue(ordenado);
+		
+		modelo.MergeSort(arreglo3);
+		
+		for(int i = 0; i < arreglo3.length-1; i++)
+		{
+			Integer dato1 = (Integer) arreglo3[i];
+			Integer dato2 = (Integer) arreglo3[i+1];
+			
+			if (dato1 > dato2)
+			{
+				ordenado = false;
+			}
+		}
+		
+		assertTrue(ordenado);
+		
+	}
+	
+	@Test
+	public void testQuick()
+	{
+		setUp2();
+		Boolean ordenado = true;
+		
+		modelo.ordenamientoPorQuickSort(arreglo1);
+		
+		for(int i = 0; i < arreglo1.length-1; i++)
+		{
+			Double dato1 = (Double) arreglo1[i];
+			Double dato2 = (Double) arreglo1[i+1];
+			
+			if (dato1 > dato2)
+			{
+				ordenado = false;
+			}
+		}
+		
+		assertTrue(ordenado);
+		
+		modelo.ordenamientoPorQuickSort(arreglo2);
+		
+		for(int i = 0; i < arreglo2.length-1; i++)
+		{
+			Integer dato1 = (Integer) arreglo2[i];
+			Integer dato2 = (Integer) arreglo2[i+1];
+			
+			if (dato1 > dato2)
+			{
+				ordenado = false;
+			}
+		}
+		
+		assertTrue(ordenado);
+		
+		modelo.ordenamientoPorQuickSort(arreglo3);
+		
+		for(int i = 0; i < arreglo3.length-1; i++)
+		{
+			Integer dato1 = (Integer) arreglo3[i];
+			Integer dato2 = (Integer) arreglo3[i+1];
+			
+			if (dato1 > dato2)
+			{
+				ordenado = false;
+			}
+		}
+		
+		assertTrue(ordenado);
+		
+	}
 }

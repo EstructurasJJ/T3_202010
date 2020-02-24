@@ -67,21 +67,21 @@ public class Controller {
 				view.printMessage("Tipo Servicio: " + modelo.UltimoComparendo().darTipo_Servicio());
 				view.printMessage("Localidad: " + modelo.UltimoComparendo().darLocalidad() + "\n----------");
 				
-				//Cargar Copia
-				
-				arreglo = null;
-				arreglo = modelo.copiarComparendos();
+
 				
 			break;
 
 			case 2:
 				
-				Comparable[] copia = arreglo;
+				//Cargar Copia
+				
+				arreglo = null;
+				arreglo = modelo.copiarComparendos();
 
 				//Ordenar los datos de forma acendente por Shell Sort y medir tiempo.
 
 				long tiempoComienzo=System.currentTimeMillis();
-				modelo.shell_sort(copia);
+				modelo.shell_sort(arreglo);
 				long tiempo= System.currentTimeMillis()-tiempoComienzo;
 
 				//Imprimir primeros 10
@@ -89,7 +89,7 @@ public class Controller {
 				int conta = 0;
 				while (conta < 10)
 				{
-					System.out.println(conta + ". " + ((Comparendo) copia[conta]).darFecha_Hora() + " , " + ((Comparendo) copia[conta]).darObjectid());
+					System.out.println(conta + ". " + ((Comparendo) arreglo[conta]).darFecha_Hora() + " , " + ((Comparendo) arreglo[conta]).darObjectid());
 					conta++;
 				}
 
@@ -97,10 +97,10 @@ public class Controller {
 
 				//Imprimir ultimos 10
 
-				int conti = copia.length-1;
-				while (conti >  copia.length-11)
+				int conti = arreglo.length-1;
+				while (conti >  arreglo.length-11)
 				{
-					System.out.println(conti+1 + ". " + ((Comparendo) copia[conti]).darFecha_Hora() + " , " + ((Comparendo) copia[conti]).darObjectid());
+					System.out.println(conti+1 + ". " + ((Comparendo) arreglo[conti]).darFecha_Hora() + " , " + ((Comparendo) arreglo[conti]).darObjectid());
 					conti--;
 				}
 
@@ -115,12 +115,15 @@ public class Controller {
 
 			case 3:
 				
-				Comparable[] copia1 = arreglo;
+				//Cargar Copia
+				
+				arreglo = null;
+				arreglo = modelo.copiarComparendos();
 				
 				//Ordenar los datos de forma acendente por Merge Sort y medir tiempo.
 
 				tiempoComienzo=System.currentTimeMillis();
-				modelo.MergeSort(copia1);
+				modelo.MergeSort(arreglo);
 				tiempo= System.currentTimeMillis()-tiempoComienzo;
 
 				//Imprimir primeros 10
@@ -128,7 +131,7 @@ public class Controller {
 				conta = 0;
 				while (conta < 10)
 				{
-					System.out.println(conta + ". " + ((Comparendo) copia1[conta]).darFecha_Hora() + " , " + ((Comparendo) copia1[conta]).darObjectid());
+					System.out.println(conta + ". " + ((Comparendo) arreglo[conta]).darFecha_Hora() + " , " + ((Comparendo) arreglo[conta]).darObjectid());
 					conta++;
 				}
 
@@ -136,10 +139,10 @@ public class Controller {
 
 				//Imprimir ultimos 10
 
-				conti = copia1.length-1;
-				while (conti >  copia1.length-11)
+				conti = arreglo.length-1;
+				while (conti >  arreglo.length-11)
 				{
-					System.out.println(conti+1 + ". " + ((Comparendo) copia1[conti]).darFecha_Hora() + " , " + ((Comparendo) copia1[conti]).darObjectid());
+					System.out.println(conti+1 + ". " + ((Comparendo) arreglo[conti]).darFecha_Hora() + " , " + ((Comparendo) arreglo[conti]).darObjectid());
 					conti--;
 				}
 
@@ -154,7 +157,10 @@ public class Controller {
 
 			case 4:
 				
-				Comparable[] copia2 = arreglo;
+				//Cargar Copia
+				
+				arreglo = null;
+				arreglo = modelo.copiarComparendos();
 				
 				//Cargar Copia
 
@@ -163,7 +169,7 @@ public class Controller {
 				//Ordenar los datos de forma acendente por Quick Sort y medir tiempo.
 
 				tiempoComienzo=System.currentTimeMillis();
-				modelo.ordenamientoPorQuickSort(copia2);
+				modelo.ordenamientoPorQuickSort(arreglo);
 				tiempo= System.currentTimeMillis()-tiempoComienzo;
 
 				//Imprimir primeros 10
@@ -171,7 +177,7 @@ public class Controller {
 				conta = 0;
 				while (conta < 10)
 				{
-					System.out.println(conta + ". " + ((Comparendo) copia2[conta]).darFecha_Hora() + " , " + ((Comparendo) copia2[conta]).darObjectid());
+					System.out.println(conta + ". " + ((Comparendo) arreglo[conta]).darFecha_Hora() + " , " + ((Comparendo) arreglo[conta]).darObjectid());
 					conta++;
 				}
 
@@ -179,10 +185,10 @@ public class Controller {
 
 				//Imprimir ultimos 10
 
-				conti = copia2.length-1;
-				while (conti >  copia2.length-11)
+				conti = arreglo.length-1;
+				while (conti >  arreglo.length-11)
 				{
-					System.out.println(conti+1 + ". " + ((Comparendo) copia2[conti]).darFecha_Hora() + " , " + ((Comparendo) copia2[conti]).darObjectid());
+					System.out.println(conti+1 + ". " + ((Comparendo) arreglo[conti]).darFecha_Hora() + " , " + ((Comparendo) arreglo[conti]).darObjectid());
 					conti--;
 				}
 
