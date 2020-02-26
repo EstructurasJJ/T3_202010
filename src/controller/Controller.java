@@ -42,7 +42,7 @@ public class Controller {
 
 				//Cargar el archivo
 
-				modelo.leerGeoJson(JUEGUEMOS);
+				modelo.leerGeoJson(RUTAGEOJASON);
 
 				view.printMessage("Archivo GeoJSon Cargado");
 				view.printMessage("Numero actual de comparendos " + modelo.darTamanio() + "\n----------");
